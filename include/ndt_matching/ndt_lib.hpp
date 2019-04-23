@@ -3,14 +3,41 @@
 
 #include "ndt_matching/visibility_control.h"
 
-namespace ndt_matching
-{
+#include <pcl/common/transforms.h>
+#include <pcl/filters/voxel_grid_covariance.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
 
-class NdtLib
-{
-public:
+namespace ndt_matching {
+
+struct Pose {
+  Eigen::Affine3f transform;
+};
+
+class NdtLib {
+ private:
+  // pcl::PointCloud<pcl::PointXYZ> m_map;
+  pcl::VoxelGridCovariance<pcl::PointXYZ> m_voxelGrid;
+  float m_resolution;
+
+  size_t m_maxIterations;
+  float m_outlierRatio;
+  float m_Epsilon;
+
+  Pose m_poseEstimate;
+
+  void computeJacobian(Pose const& poseGuess,
+                       Eigen::Matrix<float, 3, 6>& Jacobian3D);
+  void computeHessian(Pose const& poseGuess,
+                      Eigen::Matrix<float, 18, 6>& Hessian3D);
+
+ public:
   NdtLib();
-
+  void setMap(pcl::PointCloud<pcl::PointXYZ>::Ptr map, float resolution);
+  void setParams(size_t maxIter, float epsilon, float outlierRatio);
+  Pose run(pcl::PointCloud<pcl::PointXYZ> const& bagCloud,
+           Pose const& poseGuess);
+  Pose getCurrentPoseEstimate();
   virtual ~NdtLib();
 };
 
