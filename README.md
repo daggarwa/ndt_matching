@@ -1,7 +1,7 @@
 ### Instructions to run the code
 
-Using /<ardent> as ros2 distribution and /<kinetic> as ros1 distribution on Ubuntu 16.04.Substitute with your respective distributions.
-Download and extract ndt_matching.zip inside the <i>/<workspace>/src/</i> folder
+Using <i>ardent</i> as ros2 distribution and <i>kinetic</i> as ros1 distribution on Ubuntu 16.04.Substitute with your respective distributions.
+Download and extract ndt_matching.zip inside the <i>workspace/src/</i> folder
 Here the workspace folder is <i>~/ndt_match_ws </i>
 
 To build the package :
@@ -62,8 +62,8 @@ Terminal 4 : /estimated_pose
 
 #### Unit tests
 
-CMakeLists.txt exists inside <i>~/ndt_match_ws/src/ndt_matching</i>.
-On line 82 of CMakeLists.txt replace the path of map.pcd in the PCD variable as:
+<i>CMakeLists.txt</i> exists inside <i>~/ndt_match_ws/src/ndt_matching</i>.
+On line 82 of <i>CMakeLists.txt</i> replace the path of <i>map.pcd</i> in the <i>PCD</i> variable as:
 ```shell
 ament_add_gtest(ndt_test test/ndt_test.cpp ENV PCD=<path_to_map.pcd>)
 ```
