@@ -1,4 +1,4 @@
-### Instructions to run the code
+## Normal Distribution Transform Matching in ROS2
 
 Using <i>ardent</i> as ros2 distribution and <i>kinetic</i> as ros1 distribution on Ubuntu 16.04.Substitute with your respective distributions.
 Download and extract ndt_matching.zip inside the <i>workspace/src/</i> folder
