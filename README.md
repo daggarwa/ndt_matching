@@ -1,4 +1,4 @@
-###Instructions to run the code
+### Instructions to run the code
 
 Using <ardent> as ros2 distribution and <kinetic> as ros1 distribution on Ubuntu 16.04.Substitute with your respective distributions.
 Download and extract ndt_matching.zip inside the <workspace>/src/ folder
@@ -48,7 +48,7 @@ $ ros2 topic echo /estimated_pose
 ```
 
 
-Topics published
+### Topics published
 
 ```shell
 Terminal 2 : /map
@@ -58,24 +58,26 @@ Terminal 3: /filtered_points , /current_pose and others which are not subscribed
 Terminal 4 : /estimated_pose
 ```
 
-###Instructions to run the tests
+### Instructions to run the tests
 
-####Unit tests
+#### Unit tests
 
-CMakeLists.txt exists inside ~/ndt_match_ws/src/ndt_matching.
+CMakeLists.txt exists inside <i>~/ndt_match_ws/src/ndt_matching</i>.
 On line 82 of CMakeLists.txt replace the path of map.pcd in the PCD variable as:
+```shell
 ament_add_gtest(ndt_test test/ndt_test.cpp ENV PCD=<path_to_map.pcd>)
+```
 
 Unit Test will run only if this file is found on the system.
 
 To run unit tests in terminal :
 ```shell
-$  source /opt/ros/ardent/setup.bash 
+$ source /opt/ros/ardent/setup.bash 
 $ source ~/ndt_match_ws/install/setup.bash
 $ ament test --only-packages ndt_matching --ctest-args -R ndt_test
 ```
 
-####Integration Test
+#### Integration Test
 
 To run the ndt_node in ros2 use terminal 1:
 ```shell
@@ -86,7 +88,7 @@ $ ~/ndt_match_ws/install/lib/ndt_matching/ndt_node
 
 To run integration tests in terminal 2 :
 ```shell
-$  source /opt/ros/ardent/setup.bash 
+$ source /opt/ros/ardent/setup.bash 
 $ source ~/ndt_match_ws/install/setup.bash
 $ ament test --only-packages ndt_matching --ctest-args -R integration_test
 ```
