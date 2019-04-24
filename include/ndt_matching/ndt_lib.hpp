@@ -16,7 +16,6 @@ struct Pose {
 
 class NdtLib {
  private:
-  // pcl::PointCloud<pcl::PointXYZ> m_map;
   pcl::VoxelGridCovariance<pcl::PointXYZ> m_voxelGrid;
   float m_resolution;
 

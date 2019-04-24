@@ -75,17 +75,23 @@ install(TARGETS ndt_node
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # remove the line when a copyright and license is present in all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # remove the line when this package is a git repo
-  set(ament_cmake_cpplint_FOUND TRUE)
+ 
   include_directories(include)
-  ament_add_gtest(ndt_test test/ndt_test.cpp)
+
+  #add unit test source and dependencies
+  ament_add_gtest(ndt_test test/ndt_test.cpp ENV PCD=map.pcd)
   target_link_libraries(ndt_test ndt_lib ${PCL_LIBRARIES})
-  ament_lint_auto_find_test_dependencies()
+
+  #add integration test source and dependencies
+  ament_add_gtest(integration_test test/integration_test.cpp )
+  ament_target_dependencies(integration_test
+  "rclcpp"
+  "std_msgs"
+  "sensor_msgs"
+  "geometry_msgs"
+  "rcutils")
+  target_link_libraries(integration_test ${PCL_LIBRARIES})
+ 
 endif()
 
 ament_export_include_directories(
