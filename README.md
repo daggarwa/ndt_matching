@@ -1,7 +1,7 @@
 ### Instructions to run the code
 
-Using <ardent> as ros2 distribution and <kinetic> as ros1 distribution on Ubuntu 16.04.Substitute with your respective distributions.
-Download and extract ndt_matching.zip inside the <workspace>/src/ folder
+Using /<ardent> as ros2 distribution and /<kinetic> as ros1 distribution on Ubuntu 16.04.Substitute with your respective distributions.
+Download and extract ndt_matching.zip inside the <i>/<workspace>/src/</i> folder
 Here the workspace folder is <i>~/ndt_match_ws </i>
 
 To build the package :
@@ -19,7 +19,7 @@ $ roscore
 
 To start the ros2 bridge use terminal 1 : 
 ```shell
-$  source /opt/ros/ardent/setup.bash 
+$ source /opt/ros/ardent/setup.bash 
 $ ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 ```
 
